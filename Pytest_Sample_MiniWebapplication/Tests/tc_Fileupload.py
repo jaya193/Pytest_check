@@ -22,12 +22,5 @@ class TestFileUpload(Test_Base):
         assert title == TestData.Login_PG_TITLE
         self.fileupload1 = FileUpload(self.driver)
         self.fileupload1.click_fileuploadlink()
-        self.fileupload1.click_choosefile()
-        #file_nme = self.fileupload1.upload_data()
-        #assert file_nme == TestData.FILENAME
-
-
-
-
-
-
+        testfile = self.fileupload1.click_choosefile()
+        assert testfile == TestData.FILENAME
