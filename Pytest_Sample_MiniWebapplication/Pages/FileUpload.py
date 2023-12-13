@@ -10,10 +10,6 @@ from Pages.BasePg import BasePg
 
 class FileUpload(BasePg):
     FILEUPLOAD_LINK = (By.LINK_TEXT, "File Upload")
-    FILE_CHOOSE = (By.ID, "//*[@id='file-upload']")
-    File_INPUT = (By.CSS_SELECTOR, "input[type='file']")
-    File_INPUT2 =(By.ID, "file-upload")
-    UPLOAD_Button = (By.ID, "file-submit")
     # upload_file = os.path.abspath(os.path.join(os.path.dirname(__file__), ".." , TestData.FilePath))
 
     file_name_element = (By.ID, "uploaded-files")
@@ -22,17 +18,9 @@ class FileUpload(BasePg):
         self.click_ele(self.FILEUPLOAD_LINK)
 
     def click_choosefile(self):
-        upload_file = os.path.abspath(
-            "C:/Users/pjaya/PycharmProjects/Pytest_Sample_MiniWebapplication/Report/file1.txt")
-        fileinp = self.driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        fileinp.send_keys(upload_file)
-        self.click_ele(self.UPLOAD_Button)
-
-
-    def upload_data(self):
+        upload_file = os.path.abspath("C:/Users/pjaya/PycharmProjects/Pytest_Sample_MiniWebapplication/Report/file1.txt")
+        self.driver.find_element(By.CSS_SELECTOR, "input[type='file']").send_keys(TestData.FILEPATH)
+        self.driver.find_element(By.ID, "file-submit").click()
         file_name_element = self.driver.find_element(By.ID, "uploaded-files")
         file_name = file_name_element.text
         return file_name
-
-
-
